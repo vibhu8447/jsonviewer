@@ -3,10 +3,14 @@ import { getGaMeasurementId, isAnalyticsEnabled } from '../config/analytics';
 
 export function GoogleAnalytics() {
   useEffect(() => {
-    if (!isAnalyticsEnabled()) return;
 
     const measurementId = getGaMeasurementId();
     const scriptId = `ga-gtag-${measurementId}`;
+
+    console.log("GA enabled:", isAnalyticsEnabled());
+    console.log("GA ID:", getGaMeasurementId());
+
+    if (!isAnalyticsEnabled()) return;
 
     if (document.getElementById(scriptId)) return;
 
