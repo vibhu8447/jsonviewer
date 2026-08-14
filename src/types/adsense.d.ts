@@ -1,6 +1,8 @@
 declare global {
   interface Window {
-    adsbygoogle?: Record<string, unknown>[];
+    adsbygoogle?: Array<Record<string, unknown>> & {
+      requestNonPersonalizedAds?: 0 | 1;
+    };
   }
 }
 

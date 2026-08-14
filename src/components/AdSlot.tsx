@@ -29,6 +29,8 @@ export function AdSlot({ placement, className = '' }: AdSlotProps) {
     }
   }, [configured, placement]);
 
+  if (!configured) return null;
+
   return (
     <div
       className={`ad-slot ad-slot--${placement} ${className}`.trim()}
@@ -40,21 +42,14 @@ export function AdSlot({ placement, className = '' }: AdSlotProps) {
         className="ad-slot__frame"
         style={{ minHeight: unit.minHeight }}
       >
-        {configured ? (
-          <ins
-            className="adsbygoogle"
-            style={{ display: 'block' }}
-            data-ad-client={getAdClientId()}
-            data-ad-slot={unit.slotId}
-            data-ad-format={unit.format}
-            data-full-width-responsive={unit.fullWidthResponsive ? 'true' : 'false'}
-          />
-        ) : (
-          <div className="ad-placeholder" role="presentation">
-            <p>Ad space</p>
-            <span>Configure VITE_ADSENSE_* in .env to enable Google Ads</span>
-          </div>
-        )}
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client={getAdClientId()}
+          data-ad-slot={unit.slotId}
+          data-ad-format={unit.format}
+          data-full-width-responsive={unit.fullWidthResponsive ? 'true' : 'false'}
+        />
       </div>
     </div>
   );

@@ -15,7 +15,6 @@ interface ToolbarProps {
   onRemoveWhitespace: () => void;
   onClear: () => void;
   onFileLoad: (content: string) => void;
-  onAbout: () => void;
   canFormat: boolean;
   canCopy: boolean;
 }
@@ -49,7 +48,6 @@ export function Toolbar({
   onRemoveWhitespace,
   onClear,
   onFileLoad,
-  onAbout,
   canFormat,
   canCopy,
 }: ToolbarProps) {
@@ -86,10 +84,6 @@ export function Toolbar({
         label="Load JSON data"
         onClick={() => fileInputRef.current?.click()}
       />
-      <div className="toolbar__spacer" />
-      <button type="button" className="btn btn--sm about-btn" onClick={onAbout} title="About">
-        About
-      </button>
       <input
         ref={fileInputRef}
         type="file"
